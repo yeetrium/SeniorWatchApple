@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import <Parse/Parse.h>
 @interface ViewController ()
 
 @end
@@ -16,7 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self checkIfUserIsLoggedIn];
+    
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)checkIfUserIsLoggedIn
+{
+    //checks to see if User is currently logged in
+    if([PFUser currentUser] != nil){
+        [self performSegueWithIdentifier:@"Landing to Main" sender:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A9B9D055-AB53-40F1-B5B4-DD043970E319</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SeniorWatch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DF3C0559108D29436F8393A2DB600C0EF2FEFCE0</key>
+		<string>https://github.com/yeetrium/SeniorWatchApple.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SeniorWatch.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DF3C0559108D29436F8393A2DB600C0EF2FEFCE0</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yeetrium/SeniorWatchApple.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DF3C0559108D29436F8393A2DB600C0EF2FEFCE0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DF3C0559108D29436F8393A2DB600C0EF2FEFCE0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SeniorWatchApple</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -16,6 +16,9 @@
 		6B0942AA1A60A95400F53ABE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B0942A81A60A95400F53ABE /* LaunchScreen.xib */; };
 		6B0942B61A60A95500F53ABE /* SeniorWatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942B51A60A95500F53ABE /* SeniorWatchTests.m */; };
 		6B0942C01A60AD9B00F53ABE /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0942BF1A60AD9B00F53ABE /* ExternalAccessory.framework */; };
+		6B0942C61A60DB1000F53ABE /* SignUpCaretakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942C51A60DB1000F53ABE /* SignUpCaretakerViewController.m */; };
+		6B0942CA1A60EBC300F53ABE /* LoggedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942C91A60EBC300F53ABE /* LoggedInViewController.m */; };
+		6B0942CE1A60ED4700F53ABE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942CD1A60ED4700F53ABE /* LoginViewController.m */; };
 		7F03C4DFFCE784726C609A02 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A698DC3119D036910687324 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +50,12 @@
 		6B0942B51A60A95500F53ABE /* SeniorWatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeniorWatchTests.m; sourceTree = "<group>"; };
 		6B0942BF1A60AD9B00F53ABE /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		6B0942C11A60AD9B00F53ABE /* SeniorWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SeniorWatch.entitlements; sourceTree = "<group>"; };
+		6B0942C41A60DB1000F53ABE /* SignUpCaretakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpCaretakerViewController.h; sourceTree = "<group>"; };
+		6B0942C51A60DB1000F53ABE /* SignUpCaretakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpCaretakerViewController.m; sourceTree = "<group>"; };
+		6B0942C81A60EBC300F53ABE /* LoggedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggedInViewController.h; sourceTree = "<group>"; };
+		6B0942C91A60EBC300F53ABE /* LoggedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggedInViewController.m; sourceTree = "<group>"; };
+		6B0942CC1A60ED4700F53ABE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		6B0942CD1A60ED4700F53ABE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7A698DC3119D036910687324 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		803F227FFD1F2F2C836D63DE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,8 +124,10 @@
 				6B0942C11A60AD9B00F53ABE /* SeniorWatch.entitlements */,
 				6B09429A1A60A95400F53ABE /* AppDelegate.h */,
 				6B09429B1A60A95400F53ABE /* AppDelegate.m */,
-				6B0942A01A60A95400F53ABE /* ViewController.h */,
-				6B0942A11A60A95400F53ABE /* ViewController.m */,
+				6B0942CB1A60ED2900F53ABE /* UserLogin */,
+				6B0942C71A60EB9C00F53ABE /* LoggedIn */,
+				6B0942C31A60DAE700F53ABE /* Sign Up Screen */,
+				6B0942C21A60D77E00F53ABE /* LandingScreen */,
 				6B0942A31A60A95400F53ABE /* Main.storyboard */,
 				6B0942A61A60A95400F53ABE /* Images.xcassets */,
 				6B0942A81A60A95400F53ABE /* LaunchScreen.xib */,
@@ -150,6 +161,42 @@
 				6B0942B41A60A95500F53ABE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B0942C21A60D77E00F53ABE /* LandingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6B0942A01A60A95400F53ABE /* ViewController.h */,
+				6B0942A11A60A95400F53ABE /* ViewController.m */,
+			);
+			name = LandingScreen;
+			sourceTree = "<group>";
+		};
+		6B0942C31A60DAE700F53ABE /* Sign Up Screen */ = {
+			isa = PBXGroup;
+			children = (
+				6B0942C41A60DB1000F53ABE /* SignUpCaretakerViewController.h */,
+				6B0942C51A60DB1000F53ABE /* SignUpCaretakerViewController.m */,
+			);
+			name = "Sign Up Screen";
+			sourceTree = "<group>";
+		};
+		6B0942C71A60EB9C00F53ABE /* LoggedIn */ = {
+			isa = PBXGroup;
+			children = (
+				6B0942C81A60EBC300F53ABE /* LoggedInViewController.h */,
+				6B0942C91A60EBC300F53ABE /* LoggedInViewController.m */,
+			);
+			name = LoggedIn;
+			sourceTree = "<group>";
+		};
+		6B0942CB1A60ED2900F53ABE /* UserLogin */ = {
+			isa = PBXGroup;
+			children = (
+				6B0942CC1A60ED4700F53ABE /* LoginViewController.h */,
+				6B0942CD1A60ED4700F53ABE /* LoginViewController.m */,
+			);
+			name = UserLogin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +343,10 @@
 				6B09429C1A60A95400F53ABE /* AppDelegate.m in Sources */,
 				6B0942991A60A95400F53ABE /* main.m in Sources */,
 				6B0942A21A60A95400F53ABE /* ViewController.m in Sources */,
+				6B0942C61A60DB1000F53ABE /* SignUpCaretakerViewController.m in Sources */,
+				6B0942CE1A60ED4700F53ABE /* LoginViewController.m in Sources */,
 				6B09429F1A60A95400F53ABE /* SeniorWatch.xcdatamodeld in Sources */,
+				6B0942CA1A60EBC300F53ABE /* LoggedInViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

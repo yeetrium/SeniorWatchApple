@@ -8,10 +8,10 @@
 
 #import "AppDelegate.h"
 #import <PebbleKit/PebbleKit.h>
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
-@property (strong,nonatomic) PBWatch *connectedWatch;
 
 @end
 
@@ -21,9 +21,27 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //connect to parse
+    [Parse setApplicationId:@"e5lRy2EBx5CzFzUcLE2kv2lizRgcY9wzPwJrbb2P"
+                  clientKey:@"iQuW2xHDgI7d8MGywzWLkNzC3uOcbFRcYmH1iRsM"];
+    
     //connect to the last seen pebble watch
     self.connectedWatch = [[PBPebbleCentral defaultCentral] lastConnectedWatch];
     NSLog(@"Last connected watch: %@", [self.connectedWatch name]);
+    
+    //UUID for companion app
+    uuid_t myAppUUIDbytes;
+    NSUUID *myAppUUID = [[NSUUID alloc] initWithUUIDString:@"06d855a7-1cc5-4e60-b0e5-cafebd733cf9"];
+    [myAppUUID getUUIDBytes:myAppUUIDbytes];
+    
+    [[PBPebbleCentral defaultCentral] setAppUUID:[NSData dataWithBytes:myAppUUIDbytes length:16]];
+    
+    [self.connectedWatch appMessagesAddReceiveUpdateHandler:^BOOL(PBWatch *watch, NSDictionary *update) {
+        NSLog(@"Received message: %@", update);
+        return YES;
+    }];
+    
+    
     
     return YES;
 }
