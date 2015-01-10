@@ -37,10 +37,11 @@
     [[PBPebbleCentral defaultCentral] setAppUUID:[NSData dataWithBytes:myAppUUIDbytes length:16]];
     
     [self.connectedWatch appMessagesAddReceiveUpdateHandler:^BOOL(PBWatch *watch, NSDictionary *update) {
-        NSLog(@"Received message: %@", update);
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"New Message!" message:update[@(0)] delegate: nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    
         return YES;
     }];
-    
     
     
     return YES;

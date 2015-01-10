@@ -23,22 +23,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcl-k8-Gde">
-                                <rect key="frame" x="122" y="204" width="141" height="30"/>
-                                <state key="normal" title="Sign up as caretaker">
+                                <rect key="frame" x="122" y="204" width="130" height="30"/>
+                                <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="LyM-qF-mX3" kind="show" id="h1W-TM-NyF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VF9-cu-Qg9">
-                                <rect key="frame" x="122" y="256" width="130" height="30"/>
-                                <state key="normal" title="Sign up as elder">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3i-zL-3k2">
-                                <rect key="frame" x="122" y="313" width="130" height="30"/>
+                                <rect key="frame" x="122" y="252" width="130" height="30"/>
                                 <state key="normal" title="Log in">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -52,7 +46,8 @@
                     <navigationItem key="navigationItem" id="RO7-K8-Eeg"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="Vjx-ks-HWc" kind="presentation" identifier="Landing to Main" animates="NO" id="kce-I4-puu"/>
+                        <segue destination="UPB-oa-gSa" kind="presentation" identifier="Landing to Main" animates="NO" id="kce-I4-puu"/>
+                        <segue destination="R1Q-cQ-z95" kind="presentation" identifier="Landing to Patient Main" animates="NO" id="itO-wP-cRv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -97,12 +92,12 @@
                     <connections>
                         <outlet property="emailField" destination="big-Vi-wYG" id="ReO-dC-jY9"/>
                         <outlet property="passwordField" destination="cbL-a5-cqI" id="ucN-Jh-iWO"/>
-                        <segue destination="Vjx-ks-HWc" kind="presentation" identifier="Login to Main" id="goK-bm-Gw2"/>
+                        <segue destination="UPB-oa-gSa" kind="presentation" identifier="Login to Main" id="goK-bm-Gw2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0h-47-h00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1256.5" y="635.5"/>
+            <point key="canvasLocation" x="1282.5" y="713.5"/>
         </scene>
         <!--Sign Up Caretaker View Controller-->
         <scene sceneID="Ah9-ng-NIu">
@@ -137,7 +132,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceW-r6-w3l">
-                                <rect key="frame" x="126" y="364" width="111" height="30"/>
+                                <rect key="frame" x="132" y="487" width="111" height="30"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -145,23 +140,128 @@
                                     <action selector="signUpButtonPressed:" destination="LyM-qF-mX3" eventType="touchUpInside" id="46o-Jr-oHD"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZTY-rn-U5X">
+                                <rect key="frame" x="263" y="375" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchPressed:" destination="LyM-qF-mX3" eventType="valueChanged" id="z60-kY-TIC"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I am a caretaker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHj-FQ-6Pv">
+                                <rect key="frame" x="66" y="380" width="124" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="careTakerSwitch" destination="ZTY-rn-U5X" id="zQS-PG-vrE"/>
                         <outlet property="confirmPassword" destination="zAx-rd-hU3" id="Zcb-VO-dka"/>
                         <outlet property="emailField" destination="1y4-3m-NDR" id="TOy-Hk-4Gh"/>
                         <outlet property="nameField" destination="cpB-Lq-cmi" id="eHl-cX-QEW"/>
                         <outlet property="passwordField" destination="iMz-xg-GR7" id="n5c-1q-vHZ"/>
-                        <segue destination="Vjx-ks-HWc" kind="presentation" id="Ha5-q2-Qgc"/>
+                        <segue destination="UPB-oa-gSa" kind="presentation" identifier="SignUpC to Main" id="Ha5-q2-Qgc"/>
+                        <segue destination="R1Q-cQ-z95" kind="presentation" identifier="SignUpP to Main" id="YfQ-bA-XWK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XoV-e0-XCK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1249.5" y="-242.5"/>
+            <point key="canvasLocation" x="1158.5" y="-357.5"/>
         </scene>
-        <!--Logged In View Controller-->
+        <!--Item-->
+        <scene sceneID="mcS-kK-hC3">
+            <objects>
+                <viewController id="S8E-Xa-R6E" customClass="PatientScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K5b-GE-7Ja"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vp2-Im-0dT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pSC-3S-zRQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You don't have a caretaker yet!" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGA-KV-JPe">
+                                <rect key="frame" x="132" y="53" width="238" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Caretaker:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBl-nA-Hoi">
+                                <rect key="frame" x="16" y="68" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbu-SX-nBU">
+                                <rect key="frame" x="96" y="251" width="183" height="30"/>
+                                <state key="normal" title="logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="S8E-Xa-R6E" eventType="touchUpInside" id="ra7-7F-9Nf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjT-H2-WdR">
+                                <rect key="frame" x="164" y="144" width="30" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="3XN-PQ-gKz"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5IT-44-d9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2610.5" y="-661.5"/>
+        </scene>
+        <!--Patient Tasks Table View Controller-->
+        <scene sceneID="ZcG-RZ-CrH">
+            <objects>
+                <tableViewController id="o4g-wV-LMt" customClass="PatientTasksTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Uey-zI-qVe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Task Cell" textLabel="bPq-PP-Ys4" detailTextLabel="V9L-Jo-vtq" style="IBUITableViewCellStyleValue1" id="0Te-py-9xn">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Te-py-9xn" id="2oV-BT-or4">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bPq-PP-Ys4">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V9L-Jo-vtq">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="o4g-wV-LMt" id="HXb-ee-JHC"/>
+                            <outlet property="delegate" destination="o4g-wV-LMt" id="EB2-El-h0g"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Emp-ys-OFs"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yjX-Jb-8Oz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4009.5" y="183.5"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="r2g-D2-Vpy">
             <objects>
                 <viewController id="Vjx-ks-HWc" customClass="LoggedInViewController" sceneMemberID="viewController">
@@ -191,14 +291,23 @@
                                     <action selector="logOutButtonPressed:" destination="Vjx-ks-HWc" eventType="touchUpInside" id="sgy-rD-J5d"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tre-Vd-HzG">
+                                <rect key="frame" x="42" y="59" width="291" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Y9i-4y-OHh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="messageField" destination="tre-Vd-HzG" id="eeD-tC-UkD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLf-Nr-fUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1810.5" y="185.5"/>
+            <point key="canvasLocation" x="2672.5" y="567.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fqb-oe-xqL">
@@ -218,8 +327,65 @@
             </objects>
             <point key="canvasLocation" x="-148" y="186"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="rf2-u8-2O0">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="R1Q-cQ-z95" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="C6C-Jp-MIa">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="S8E-Xa-R6E" kind="relationship" relationship="viewControllers" id="r31-hH-26b"/>
+                        <segue destination="A7P-Id-tjM" kind="relationship" relationship="viewControllers" id="aAf-wy-8fn"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TY4-aa-OVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1939.5" y="-141.5"/>
+        </scene>
+        <!--My Tasks-->
+        <scene sceneID="kIc-xY-qUO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A7P-Id-tjM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Tasks" id="VC2-Ob-xZ2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="s6E-fQ-5W6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="o4g-wV-LMt" kind="relationship" relationship="rootViewController" id="9dj-FR-VjQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iC8-WQ-dfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3422.5" y="185.5"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="lIn-Sw-IpT">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="UPB-oa-gSa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="vRe-Od-ixy">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Vjx-ks-HWc" kind="relationship" relationship="viewControllers" id="V9p-LZ-6eB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="isJ-iZ-5vb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2079" y="781"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kce-I4-puu"/>
+        <segue reference="itO-wP-cRv"/>
+        <segue reference="goK-bm-Gw2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,7 +25,15 @@
 {
     //checks to see if User is currently logged in
     if([PFUser currentUser] != nil){
-        [self performSegueWithIdentifier:@"Landing to Main" sender:nil];
+        PFUser *user = [PFUser currentUser];
+        
+        if([user[@"userType"] isEqualToString:@"2"]){
+            [self performSegueWithIdentifier:@"Landing to Patient Main" sender:nil];
+        }
+        else{
+            [self performSegueWithIdentifier:@"Landing to Main" sender:nil];
+        }
+        
     }
 }
 

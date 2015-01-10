@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) NSDictionary *messageSent;
 @property (strong, nonatomic) PBWatch *connectedWatch;
+@property (strong, nonatomic) IBOutlet UITextField *messageField;
 
 @end
 
@@ -24,6 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self.connectedWatch appMessagesAddReceiveUpdateHandler:^BOOL(PBWatch *watch, NSDictionary *update) {
+        NSLog(@"Received message: %@", update);
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"New Message" message:[NSString stringWithFormat:@"%@", update] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        
+        [alert show];
+        return YES;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,11 +58,14 @@
 }
 - (IBAction)sendMessageButtonPressed:(UIButton *)sender
 {
+    //get property from our app delegate
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     self.messageSent = @{ @(0):[NSNumber numberWithUint8:42],
-                              @(1):@"Yo lol" };
+                              @(1):self.messageField.text };
     self.connectedWatch = myDelegate.connectedWatch;
     
+    //send our message
     [self.connectedWatch appMessagesPushUpdate:self.messageSent onSent:^(PBWatch *watch, NSDictionary *update, NSError *error) {
         if (!error) {
             NSLog(@"Successfully sent message.");

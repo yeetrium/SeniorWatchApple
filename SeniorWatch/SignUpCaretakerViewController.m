@@ -16,6 +16,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UITextField *confirmPassword;
 
+@property (strong, nonatomic) IBOutlet UISwitch *careTakerSwitch;
+
+@property (strong, nonatomic) NSString *userType; //1 for caretaker, 2 for patient
 
 @end
 
@@ -23,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.careTakerSwitch setOn:false];
+    self.userType = @"2";
     
 }
 
@@ -74,11 +79,33 @@
     newUser.username = [self.nameField.text lowercaseString];
     newUser.password = self.passwordField.text;
     newUser.email = self.emailField.text;
+    newUser[@"userType"] = self.userType;
     
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(!error){
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Success!" message:@"You successfully signed up!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alert show];
+            if([self.userType isEqualToString:@"1"]){
+                
+                //create a new entry in the caretaker field
+                PFObject *newCaretaker = [[PFObject alloc]initWithClassName:@"Caretaker"];
+                newCaretaker[@"userID"]= [PFUser currentUser].objectId;
+                
+                [newCaretaker saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    [self performSegueWithIdentifier:@"SignUpC to Main" sender:nil];
+                }];
+                
+                
+            }
+            else{
+                //create a new patient object
+                PFObject *newPatient = [[PFObject alloc]initWithClassName:@"Patient"];
+                newPatient[@"userID"] = [PFUser currentUser].objectId;
+                
+                [newPatient saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    [self performSegueWithIdentifier:@"SignUpP to Main" sender:nil];
+                }];
+                
+                
+            }
         }
         else{
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Sorry, there was an error!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
@@ -92,6 +119,34 @@
 {
     [self checkFields];
 
+}
+
+#pragma mark - Methods for dismissing keyboard
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+- (IBAction)switchPressed:(UISwitch *)sender
+{
+    if([self.careTakerSwitch isOn]){
+        self.userType = @"1";
+        
+    }
+    else{
+        self.userType = @"2";
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
 }
 
 
