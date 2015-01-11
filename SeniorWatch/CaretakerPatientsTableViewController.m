@@ -8,6 +8,7 @@
 
 #import "CaretakerPatientsTableViewController.h"
 #import <Parse/Parse.h>
+#import "MyPatientsTasksTableViewController.h"
 
 @interface CaretakerPatientsTableViewController ()
 
@@ -39,6 +40,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getPatients];
+    [self.tableView reloadData];
+    [NSTimer scheduledTimerWithTimeInterval:7.0 target:self selector:@selector(getPatients) userInfo:nil repeats:YES];
+    
+    PFQuery *pushQuery = [PFInstallation query];
+    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+    
+    // Send push notification to query
+    [PFPush sendPushMessageToQueryInBackground:pushQuery
+                                   withMessage:@"Hello World!"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -64,17 +74,19 @@
     [queryForMyPatients getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         self.myPatients = object[@"patients"];
         NSLog(@"%@", self.myPatients);
-        [self.tableView reloadData];
+        
+        //query the user class in order to get full patient objects //
+        PFQuery *queryForUsers = [PFQuery queryWithClassName:@"_User"];
+        [queryForUsers whereKey:@"objectId" containedIn:self.myPatients];
+        
+        [queryForUsers findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            self.patientObjects = [objects mutableCopy];
+            [self.tableView reloadData];
+        }];
+
+        //[self.tableView reloadData];
     }];
     
-    //query the user class in order to get full patient objects //
-    PFQuery *queryForUsers = [PFQuery queryWithClassName:@"_User"];
-    [queryForUsers whereKey:@"objectId" containedIn:self.myPatients];
-    
-    [queryForUsers findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.patientObjects = [objects mutableCopy];
-        [self.tableView reloadData];
-    }];
     
 }
 
@@ -93,6 +105,11 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", patient[@"firstName"], patient[@"lastName"]];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"My Patient Tasks" sender:nil];
 }
 
 
@@ -130,14 +147,30 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([segue.destinationViewController isKindOfClass: [MyPatientsTasksTableViewController class]]){
+        
+        NSIndexPath *indexPath =  nil;
+        PFObject *selectedPatient = nil;
+        
+        indexPath = [self.tableView indexPathForSelectedRow];
+        selectedPatient = self.patientObjects[indexPath.row];
+        
+        MyPatientsTasksTableViewController *patientTasks = segue.destinationViewController;
+        patientTasks.patient = selectedPatient;
+        
+        NSLog(@"%@", selectedPatient);
+        
+    }
+    
 }
-*/
+
 
 @end

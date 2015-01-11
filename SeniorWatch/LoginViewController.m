@@ -42,7 +42,17 @@
 {
     [PFUser logInWithUsernameInBackground:self.emailField.text password:self.passwordField.text block:^(PFUser *user, NSError *error) {
         if(!error){
-            [self performSegueWithIdentifier:@"Login to Main" sender:nil];
+            NSLog([PFUser currentUser][@"userType"]);
+            
+            NSString *type = [PFUser currentUser][@"userType"];
+            if([type isEqualToString:@"1"]){
+                [self performSegueWithIdentifier:@"Login to Caretaker" sender:nil];
+            }
+            else{
+                [self performSegueWithIdentifier:@"Login to Patient" sender:nil];
+            }
+            
+            [self performSegueWithIdentifier:@"Login to Caretaker" sender:nil];
         }
         else{
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error!" message:@"Your credentials were incorrect. Try again" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];

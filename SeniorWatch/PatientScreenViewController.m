@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSMutableArray *myTasksArray;
 @property (strong, nonatomic) NSDictionary *messageSent;
 @property (strong, nonatomic) PBWatch *connectedWatch;
+@property (strong, nonatomic) IBOutlet UILabel *careTakerName;
+@property (strong, nonatomic) NSString *careTakerId;
 
 @end
 
@@ -24,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getMyTasks];
+    [self getMyCaretaker];
     // Do any additional setup after loading the view.
 }
 
@@ -53,6 +56,40 @@
     }];
 
 }
+-(void)getMyCaretaker
+{
+    PFQuery *queryForCaretaker = [PFQuery queryWithClassName:@"Patient"];
+    [queryForCaretaker whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    [queryForCaretaker getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        
+        if(!error){
+            NSLog(@"%@", object[@"caretakerID"]);
+            
+            PFQuery *finalQuery = [PFQuery queryWithClassName:@"_User"];
+            [finalQuery whereKey:@"objectId" equalTo:object[@"caretakerID"]];
+            
+            [finalQuery getFirstObjectInBackgroundWithBlock:^(PFObject *user, NSError *error) {
+                NSLog(@"%@", user);
+                
+                self.careTakerName.text = [NSString stringWithFormat:@"%@ %@", user[@"firstName"], user[@"lastName"]];
+                [self.view setNeedsDisplay];
+            }];
+//            self.myCaretaker = object[@"caretaker"][@"objectId"];
+//            NSLog(@"%@", self.myCaretaker);
+//            self.careTakerName.text = self.myCaretaker[@"firstName"];
+//            [self.view setNeedsDisplay];
+        }
+        
+    }];
+    
+    
+}
+
+-(void)setUpView
+{
+    //self.careTakerName.text = self.myCaretaker[@"firstName"];
+}
 
 -(void)sendTasksToWatch
 {
@@ -63,31 +100,31 @@
     NSMutableArray *taskNames = [[NSMutableArray alloc]init];
     for(int i = 0; i < self.myTasksArray.count; i++){
         [taskNames addObject:self.myTasksArray[i][@"name"]];
-        NSLog(self.myTasksArray[i][@"name"]);
+//        NSLog(self.myTasksArray[i][@"name"]);
     }
     
-    [taskNames addObject:@"Cool"];
+    //[taskNames addObject:@"Cool"];
     
-   // NSDictionary *tasks = [[NSDictionary alloc]initWithObjects:taskNames forKeys:@[@"4",@"5"]];
-    NSDictionary *tasks = [[NSDictionary alloc]initWithObjects:taskNames forKeys:@[@(4),@(5), @(6)]];
+    NSDictionary *tasks = [[NSDictionary alloc]initWithObjects:taskNames forKeys:@[@"4",@"5"]];
+   // NSDictionary *tasks = [[NSDictionary alloc]initWithObjects:taskNames forKeys:@[@(4),@(5)]];
     //NSLog(@"%@", tasks);
     
-//    NSError *error;
-//    NSData *jsonData = [[NSData alloc]init];
-//    NSString *jsonString;
-//    jsonData = [NSJSONSerialization dataWithJSONObject:tasks
-//                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-//                                                         error:&error];
-//    if (!jsonData) {
-//        NSLog(@"Got an error: %@", error);
-//    } else {
-//        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//        NSLog(@"Data: %@", [NSString stringWithFormat:@"%@\0", jsonString]);
-//    }
-//    
-//    self.messageSent = @{ @(0):[NSNumber numberWithUint8:255],
-//                             @(4): jsonString};
-    self.messageSent = tasks;
+    NSError *error;
+    NSData *jsonData = [[NSData alloc]init];
+    NSString *jsonString;
+    jsonData = [NSJSONSerialization dataWithJSONObject:tasks
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    if (!jsonData) {
+        NSLog(@"Got an error: %@", error);
+    } else {
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"Data: %@", [NSString stringWithFormat:@"%@\0", jsonString]);
+    }
+    
+    self.messageSent = @{ @(0):[NSNumber numberWithUint8:255],
+                             @(4): jsonString};
+    //self.messageSent = tasks;
     
     self.connectedWatch = myDelegate.connectedWatch;
         

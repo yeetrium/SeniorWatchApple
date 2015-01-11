@@ -92,7 +92,8 @@
                     <connections>
                         <outlet property="emailField" destination="big-Vi-wYG" id="ReO-dC-jY9"/>
                         <outlet property="passwordField" destination="cbL-a5-cqI" id="ucN-Jh-iWO"/>
-                        <segue destination="UPB-oa-gSa" kind="presentation" identifier="Login to Main" id="goK-bm-Gw2"/>
+                        <segue destination="UPB-oa-gSa" kind="presentation" identifier="Login to Caretaker" id="goK-bm-Gw2"/>
+                        <segue destination="R1Q-cQ-z95" kind="presentation" identifier="Login to Patient" id="dH7-ob-jA7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0h-47-h00" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,7 +195,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You don't have a caretaker yet!" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGA-KV-JPe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGA-KV-JPe">
                                 <rect key="frame" x="132" y="53" width="238" height="51"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -226,6 +227,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="3XN-PQ-gKz"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="careTakerName" destination="RGA-KV-JPe" id="VpD-En-3ji"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5IT-44-d9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -349,6 +353,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="MNT-14-Lwv" kind="show" identifier="My Patient Tasks" id="fIW-4L-wA5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Piu-vd-ZYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -399,7 +406,48 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3480" y="1571"/>
+            <point key="canvasLocation" x="3405.5" y="1814.5"/>
+        </scene>
+        <!--My Patients Tasks Table View Controller-->
+        <scene sceneID="iOs-Wf-C8h">
+            <objects>
+                <tableViewController id="MNT-14-Lwv" customClass="MyPatientsTasksTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Cp1-Y3-Z5S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Task" textLabel="hjm-cr-WdF" detailTextLabel="WLz-Tg-HZy" style="IBUITableViewCellStyleValue1" id="rbf-lC-ihx">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rbf-lC-ihx" id="BsQ-dU-74u">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hjm-cr-WdF">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WLz-Tg-HZy">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MNT-14-Lwv" id="GtG-b9-E0C"/>
+                            <outlet property="delegate" destination="MNT-14-Lwv" id="U1M-rC-VES"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JeL-NJ-6gG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3450.5" y="798.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fqb-oe-xqL">
@@ -497,7 +545,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ha5-q2-Qgc"/>
-        <segue reference="YfQ-bA-XWK"/>
+        <segue reference="goK-bm-Gw2"/>
+        <segue reference="dH7-ob-jA7"/>
     </inferredMetricsTieBreakers>
 </document>

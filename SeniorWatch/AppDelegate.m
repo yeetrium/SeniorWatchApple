@@ -25,6 +25,16 @@
     [Parse setApplicationId:@"e5lRy2EBx5CzFzUcLE2kv2lizRgcY9wzPwJrbb2P"
                   clientKey:@"iQuW2xHDgI7d8MGywzWLkNzC3uOcbFRcYmH1iRsM"];
     
+    NSLog(@"about to register");
+    //setup push notifications
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+    
     //connect to the last seen pebble watch
     self.connectedWatch = [[PBPebbleCentral defaultCentral] lastConnectedWatch];
     NSLog(@"Last connected watch: %@", [self.connectedWatch name]);
@@ -56,6 +66,18 @@
     
     
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    NSLog(@"Ran didRegister");
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 //detect connections

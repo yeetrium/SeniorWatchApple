@@ -137,7 +137,7 @@
 {
     self.index = indexPath.row;
     
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"Are you sure you want to add %@ %@ to your patients?", self.patientsArray[indexPath.row][@"firstName"], self.patientsArray[indexPath.row][@"lastName"]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Yes", nil];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:[NSString stringWithFormat:@"Are you sure you want to add %@ %@ to your patients?", self.patientsArray[indexPath.row][@"firstName"], self.patientsArray[indexPath.row][@"lastName"]] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     [alert show];
 }
 
@@ -165,6 +165,8 @@
         [queryMyself getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             [object[@"patients"] addObject:updatedPatient.objectId];
             [object saveInBackground];
+            [self.navigationController popViewControllerAnimated:YES];
+        
         }];
         
         

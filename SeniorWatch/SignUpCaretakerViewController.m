@@ -103,9 +103,10 @@
             }
             else{
                 //create a new patient object
+                NSLog(@"Added patient!");
                 PFObject *newPatient = [[PFObject alloc]initWithClassName:@"Patient"];
                 newPatient[@"userID"] = [PFUser currentUser].objectId;
-                newPatient[@"taken"] = false;
+                newPatient[@"paired"] = @"0";
                 newPatient[@"user"] = [PFUser currentUser];
                 
                 
