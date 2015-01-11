@@ -37,9 +37,20 @@
     [[PBPebbleCentral defaultCentral] setAppUUID:[NSData dataWithBytes:myAppUUIDbytes length:16]];
     
     [self.connectedWatch appMessagesAddReceiveUpdateHandler:^BOOL(PBWatch *watch, NSDictionary *update) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"New Message!" message:update[@(0)] delegate: nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"New Message!" message:update[@(1)] delegate: nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
+        
+        if(!update[@(3)]){
+            
+        }
+        else{
+            NSString *phoneNumber = @"8312967107"; // dynamically assigned
+            NSString *phoneURLString = [NSString stringWithFormat:@"tel:%@", phoneNumber];
+            NSURL *phoneURL = [NSURL URLWithString:phoneURLString];
+            [[UIApplication sharedApplication] openURL:phoneURL];
+        }
     
+        NSLog(@"%@", update);
         return YES;
     }];
     

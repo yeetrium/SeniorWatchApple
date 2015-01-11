@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *confirmPassword;
 
 @property (strong, nonatomic) IBOutlet UISwitch *careTakerSwitch;
+@property (strong, nonatomic) IBOutlet UITextField *firstNameField;
+@property (strong, nonatomic) IBOutlet UITextField *lastNameField;
 
 @property (strong, nonatomic) NSString *userType; //1 for caretaker, 2 for patient
 
@@ -80,6 +82,9 @@
     newUser.password = self.passwordField.text;
     newUser.email = self.emailField.text;
     newUser[@"userType"] = self.userType;
+    newUser[@"firstName"] = self.firstNameField.text;
+    newUser[@"lastName"] = self.lastNameField.text;
+   // newUser[]
     
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(!error){
@@ -88,7 +93,8 @@
                 //create a new entry in the caretaker field
                 PFObject *newCaretaker = [[PFObject alloc]initWithClassName:@"Caretaker"];
                 newCaretaker[@"userID"]= [PFUser currentUser].objectId;
-                
+                newCaretaker[@"user"] = [PFUser currentUser];
+                newCaretaker[@"patients"] = @[];
                 [newCaretaker saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     [self performSegueWithIdentifier:@"SignUpC to Main" sender:nil];
                 }];
@@ -99,6 +105,9 @@
                 //create a new patient object
                 PFObject *newPatient = [[PFObject alloc]initWithClassName:@"Patient"];
                 newPatient[@"userID"] = [PFUser currentUser].objectId;
+                newPatient[@"taken"] = false;
+                newPatient[@"user"] = [PFUser currentUser];
+                
                 
                 [newPatient saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     [self performSegueWithIdentifier:@"SignUpP to Main" sender:nil];
@@ -121,11 +130,6 @@
 
 }
 
-#pragma mark - Methods for dismissing keyboard
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    return YES;
-}
 - (IBAction)switchPressed:(UISwitch *)sender
 {
     if([self.careTakerSwitch isOn]){
@@ -136,6 +140,13 @@
         self.userType = @"2";
     }
 }
+
+#pragma mark - Methods for dismissing keyboard
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

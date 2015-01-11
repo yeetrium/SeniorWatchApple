@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeniorWatch/SignUpCaretakerViewController.m"
-            timestampString = "442615580.676598"
+            timestampString = "442634023.699807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "-signUpUser"
             landmarkType = "5">
             <Locations>
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeniorWatch/SignUpCaretakerViewController.m"
-            timestampString = "442615580.676598"
+            timestampString = "442634023.699807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "-signUpUser"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,13 +72,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SeniorWatch/SignUpCaretakerViewController.m"
-            timestampString = "442615580.676598"
+            timestampString = "442634023.699807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "-signUpUser"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeniorWatch/PatientScreenViewController.m"
+            timestampString = "442657350.831926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-sendTasksToWatch"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PatientScreenViewController sendTasksToWatch]"
+                  moduleName = "SeniorWatch"
+                  urlString = "file:///Users/nestorzepeda/Desktop/SeniorWatchApple/SeniorWatch/PatientScreenViewController.m"
+                  timestampString = "442652800.321388"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "1604">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[PatientScreenViewController sendTasksToWatch]_block_invoke"
+                  moduleName = "SeniorWatch"
+                  urlString = "file:///Users/nestorzepeda/Desktop/SeniorWatchApple/SeniorWatch/PatientScreenViewController.m"
+                  timestampString = "442652800.321563"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

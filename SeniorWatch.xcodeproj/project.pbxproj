@@ -22,6 +22,8 @@
 		6B0942D21A61CE6D00F53ABE /* PatientScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942D11A61CE6D00F53ABE /* PatientScreenViewController.m */; };
 		6B0942D61A61D13E00F53ABE /* PatientTasksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942D51A61D13E00F53ABE /* PatientTasksTableViewController.m */; };
 		6B0942DA1A61DAE800F53ABE /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942D91A61DAE800F53ABE /* TaskTableViewCell.m */; };
+		6B0942E11A61F4D900F53ABE /* CaretakerPatientsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942E01A61F4D900F53ABE /* CaretakerPatientsTableViewController.m */; };
+		6B0942E51A61F9DE00F53ABE /* SearchAndAddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0942E41A61F9DE00F53ABE /* SearchAndAddTableViewController.m */; };
 		7F03C4DFFCE784726C609A02 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A698DC3119D036910687324 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,10 @@
 		6B0942D51A61D13E00F53ABE /* PatientTasksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientTasksTableViewController.m; sourceTree = "<group>"; };
 		6B0942D81A61DAE800F53ABE /* TaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTableViewCell.h; sourceTree = "<group>"; };
 		6B0942D91A61DAE800F53ABE /* TaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTableViewCell.m; sourceTree = "<group>"; };
+		6B0942DF1A61F4D900F53ABE /* CaretakerPatientsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaretakerPatientsTableViewController.h; sourceTree = "<group>"; };
+		6B0942E01A61F4D900F53ABE /* CaretakerPatientsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaretakerPatientsTableViewController.m; sourceTree = "<group>"; };
+		6B0942E31A61F9DE00F53ABE /* SearchAndAddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAndAddTableViewController.h; sourceTree = "<group>"; };
+		6B0942E41A61F9DE00F53ABE /* SearchAndAddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAndAddTableViewController.m; sourceTree = "<group>"; };
 		7A698DC3119D036910687324 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		803F227FFD1F2F2C836D63DE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,7 +142,7 @@
 				6B0942D31A61D10B00F53ABE /* Patient Tasks */,
 				6B0942CF1A61CE3F00F53ABE /* PatientScreen */,
 				6B0942CB1A60ED2900F53ABE /* UserLogin */,
-				6B0942C71A60EB9C00F53ABE /* LoggedIn */,
+				6B0942C71A60EB9C00F53ABE /* CaretakerScreen */,
 				6B0942C31A60DAE700F53ABE /* Sign Up Screen */,
 				6B0942C21A60D77E00F53ABE /* LandingScreen */,
 				6B0942A31A60A95400F53ABE /* Main.storyboard */,
@@ -192,13 +198,14 @@
 			name = "Sign Up Screen";
 			sourceTree = "<group>";
 		};
-		6B0942C71A60EB9C00F53ABE /* LoggedIn */ = {
+		6B0942C71A60EB9C00F53ABE /* CaretakerScreen */ = {
 			isa = PBXGroup;
 			children = (
+				6B0942DB1A61F49C00F53ABE /* CaretakerPatients */,
 				6B0942C81A60EBC300F53ABE /* LoggedInViewController.h */,
 				6B0942C91A60EBC300F53ABE /* LoggedInViewController.m */,
 			);
-			name = LoggedIn;
+			name = CaretakerScreen;
 			sourceTree = "<group>";
 		};
 		6B0942CB1A60ED2900F53ABE /* UserLogin */ = {
@@ -236,6 +243,25 @@
 				6B0942D91A61DAE800F53ABE /* TaskTableViewCell.m */,
 			);
 			name = "Task Cells";
+			sourceTree = "<group>";
+		};
+		6B0942DB1A61F49C00F53ABE /* CaretakerPatients */ = {
+			isa = PBXGroup;
+			children = (
+				6B0942E21A61F98D00F53ABE /* Add Patient */,
+				6B0942DF1A61F4D900F53ABE /* CaretakerPatientsTableViewController.h */,
+				6B0942E01A61F4D900F53ABE /* CaretakerPatientsTableViewController.m */,
+			);
+			name = CaretakerPatients;
+			sourceTree = "<group>";
+		};
+		6B0942E21A61F98D00F53ABE /* Add Patient */ = {
+			isa = PBXGroup;
+			children = (
+				6B0942E31A61F9DE00F53ABE /* SearchAndAddTableViewController.h */,
+				6B0942E41A61F9DE00F53ABE /* SearchAndAddTableViewController.m */,
+			);
+			name = "Add Patient";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,10 +408,12 @@
 				6B09429C1A60A95400F53ABE /* AppDelegate.m in Sources */,
 				6B0942991A60A95400F53ABE /* main.m in Sources */,
 				6B0942DA1A61DAE800F53ABE /* TaskTableViewCell.m in Sources */,
+				6B0942E51A61F9DE00F53ABE /* SearchAndAddTableViewController.m in Sources */,
 				6B0942D61A61D13E00F53ABE /* PatientTasksTableViewController.m in Sources */,
 				6B0942A21A60A95400F53ABE /* ViewController.m in Sources */,
 				6B0942C61A60DB1000F53ABE /* SignUpCaretakerViewController.m in Sources */,
 				6B0942D21A61CE6D00F53ABE /* PatientScreenViewController.m in Sources */,
+				6B0942E11A61F4D900F53ABE /* CaretakerPatientsTableViewController.m in Sources */,
 				6B0942CE1A60ED4700F53ABE /* LoginViewController.m in Sources */,
 				6B09429F1A60A95400F53ABE /* SeniorWatch.xcdatamodeld in Sources */,
 				6B0942CA1A60EBC300F53ABE /* LoggedInViewController.m in Sources */,
